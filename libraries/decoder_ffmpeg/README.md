@@ -29,12 +29,17 @@ FFMPEG_MODULE_PATH="$(pwd)/libraries/decoder_ffmpeg/src/main"
 ```
 
 *   Download the [Android NDK][] and set its location in a shell variable. This
-    build configuration has been tested on NDK r26b (r23c if ANDROID_ABI is less
+    build configuration has been tested on NDK r27 (r23c if ANDROID_ABI is less
     than 21).
 
 ```
 NDK_PATH="<path to Android NDK>"
 ```
+
+*   **16KB page size support**: Android 15 and later support 16KB page sizes.
+    To build with 16KB page alignment, ensure you are using NDK r27 or newer.
+    The build script and `CMakeLists.txt` are already configured to use
+    `-Wl,-z,max-page-size=16384` for ELF alignment.
 
 * Set the host platform (use "darwin-x86_64" for Mac OS X):
 
